@@ -1,30 +1,50 @@
-<script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
-</script>
-
 <template>
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
-  </div>
-  <HelloWorld msg="Vite + Vue" />
+    <div style="margin-top: 20px">
+        <table border width="600" cellpadding="0" :cellspacing="0">
+            <thead>
+                <tr>
+                    <th>文件</th>
+                    <th>状态</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody v-for="item in dataList">
+                <tr>
+                    <td>{{ item.name }}</td>
+                    <td>{{ item.status }}</td>
+                    <td><button>Del</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </template>
 
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+<script setup lang="ts">
+import { reactive } from "vue";
+
+interface FileData {
+    name: string;
+    status: string;
+    operation: string;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
-</style>
+
+let dataList = reactive<FileData[]>([
+    {
+        name: "a.sql",
+        status: "read",
+        operation: "Del",
+    },
+    {
+        name: "b.sql",
+        status: "read",
+        operation: "Del",
+    },
+    {
+        name: "c.sql",
+        status: "read",
+        operation: "Del",
+    }
+]);
+</script>
+
+<style scoped></style>
