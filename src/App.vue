@@ -7,7 +7,7 @@
                     <tr>
                         <th>文件</th>
                         <th>状态</th>
-                        <th>操作</th>
+                        <th>操作123</th>
                     </tr>
                 </thead>
                 <tbody v-for="item in dataList">
